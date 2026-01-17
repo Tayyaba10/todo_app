@@ -2,6 +2,7 @@
 
 import React from 'react';
 import LoginForm from '../../../src/components/auth/LoginForm';
+import type { Route } from 'next';
 import Link from 'next/link';
 
 const LoginPage: React.FC = () => {
@@ -25,7 +26,7 @@ const LoginPage: React.FC = () => {
 
           <div className="mt-6 text-center text-sm text-gray-600">
             <div className="mt-4">
-              <Link href="/forgot-password" className="font-medium text-blue-600 hover:text-blue-500">
+              <Link href={"/forgot-password" as Route} className="font-medium text-blue-600 hover:text-blue-500">
                 Forgot your password?
               </Link>
             </div>
