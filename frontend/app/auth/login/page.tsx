@@ -25,7 +25,7 @@ const LoginPage: React.FC = () => {
 
           <div className="mt-6 text-center text-sm text-gray-600">
             <div className="mt-4">
-              <Link href="/forgot-password" className="font-medium text-blue-600 hover:text-blue-500">
+              <Link href="/auth/forgot-password" className="font-medium text-blue-600 hover:text-blue-500">
                 Forgot your password?
               </Link>
             </div>
