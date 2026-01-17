@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Added comment to force rebuild on Vercel
   experimental: {
     typedRoutes: true,
   },
