@@ -29,16 +29,12 @@ const EditTaskPage = () => {
   const fetchTask = async () => {
     try {
       setLoading(true);
-      const data = await apiService.getTasks();
-      const tasksArray: Task[] = Array.isArray(data) ? data : (data.data || []);
-      const foundTask = tasksArray.find(t => t.id === taskId);
+      // const data = await apiService.getTasks();
+      // const tasksArray: Task[] = Array.isArray(data) ? data : (data.data || []);
+      // const foundTask = tasksArray.find(t => t.id === taskId);
 
-      if (!foundTask) {
-        showNotification('error', 'Task not found');
-        setTask(null);
-      } else {
-        setTask(foundTask);
-      }
+      const foundTask = await apiService.getTaskById(taskId); // ✅ direct call
+      setTask(foundTask);
     } catch (err) {
       showNotification('error', (err as Error).message || 'Failed to fetch task');
     } finally {
@@ -49,7 +45,7 @@ const EditTaskPage = () => {
   const handleSubmit = async (data: TaskFormData) => {
     try {
       setIsSubmitting(true);
-      await apiService.updateTask(taskId, data);
+      await apiService.getTaskById(taskId);
       showNotification('success', 'Task updated successfully');
       router.push('/tasks');
       router.refresh(); // Refresh to show the updated task

@@ -1,3 +1,4 @@
+import { Task } from '@/types';
 import { getToken, removeToken } from '../auth/jwt-utils';
 
 class ApiService {
@@ -88,21 +89,23 @@ class ApiService {
     });
   }
 
-  async updateTask(taskId: number, taskData: { title?: string; description?: string; completed?: boolean }) {
-    return this.request(`/tasks/${taskId}`, {
-      method: 'PUT',
-      body: JSON.stringify(taskData),
-    });
-  }
-
+  // async updateTask(taskId: number, taskData: { title?: string; description?: string; completed?: boolean }) {
+  //   return this.request(`/tasks/${taskId}`, {
+  //     method: 'PUT',
+  //     body: JSON.stringify(taskData),
+  //   });
+  // }
+  async getTaskById(taskId: number): Promise<Task> {
+    return this.request<Task>(`/tasks/api/tasks/${taskId}`);
+}
   async deleteTask(taskId: number) {
-    return this.request(`/tasks/${taskId}`, {
+    return this.request(`/tasks/api/tasks/${taskId}`, {
       method: 'DELETE',
     });
   }
 
   async toggleTaskCompletion(taskId: number, completed: boolean) {
-    return this.request(`/tasks/${taskId}/complete`, {
+    return this.request(`/tasks/api/tasks/${taskId}/complete`, {
       method: 'PATCH',
       body: JSON.stringify({ completed }),
     });

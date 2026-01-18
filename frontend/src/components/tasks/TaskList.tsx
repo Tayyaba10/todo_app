@@ -11,7 +11,7 @@ interface TaskListProps {
   viewMode?: 'list' | 'grid';
   loading?: boolean;
   onToggle?: (id: number, completed: boolean) => void;
-  onEdit?: (task: Task) => void;
+  // onEdit?: (task: Task) => void;
   onDelete?: (id: number) => void;
 }
 
@@ -20,7 +20,7 @@ const TaskList: React.FC<TaskListProps> = ({
   viewMode = 'list',
   loading = false,
   onToggle,
-  onEdit,
+  // onEdit,
   onDelete
 }) => {
   if (loading) {
@@ -54,7 +54,7 @@ const TaskList: React.FC<TaskListProps> = ({
             key={task.id}
             task={task}
             onToggle={onToggle}
-            onEdit={onEdit}
+            // onEdit={onEdit}
             onDelete={onDelete}
           />
         ) : (
@@ -62,7 +62,7 @@ const TaskList: React.FC<TaskListProps> = ({
             key={task.id}
             task={task}
             onToggle={onToggle}
-            onEdit={onEdit}
+            // onEdit={onEdit}
             onDelete={onDelete}
           />
         )

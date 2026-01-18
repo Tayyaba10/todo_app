@@ -2,21 +2,23 @@
 
 import React from 'react';
 import { Task } from '../../types';
+import { useRouter } from 'next/dist/client/components/navigation';
 
 interface TaskItemProps {
   task: Task;
   onToggle?: (id: number, completed: boolean) => void;
-  onEdit?: (task: Task) => void;
+  // onEdit?: (task: Task) => void;
   onDelete?: (id: number) => void;
 }
 
-const TaskItem: React.FC<TaskItemProps> = ({ task, onToggle, onEdit, onDelete }) => {
+const TaskItem: React.FC<TaskItemProps> = ({ task, onToggle, onDelete }) => {
   const handleToggle = () => {
     onToggle?.(task.id, !task.completed);
   };
 
+  const router = useRouter();
   const handleEdit = () => {
-    onEdit?.(task);
+    router.push(`/tasks/${task.id}/edit`);
   };
 
   const handleDelete = () => {

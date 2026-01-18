@@ -70,7 +70,7 @@ def create_task(
     )
 
 
-@router.get("/{task_id}", response_model=TaskResponse)
+@router.get("/api/tasks/{task_id}", response_model=TaskResponse)
 def get_task(
     task_id: int,
     current_user: dict = Depends(get_current_user),
@@ -94,7 +94,7 @@ def get_task(
     )
 
 
-@router.put("/{task_id}", response_model=TaskResponse)
+@router.put("/api/tasks/{task_id}", response_model=TaskResponse)
 def update_task(
     task_id: int,
     task_update: TaskUpdateRequest,
@@ -124,7 +124,7 @@ def update_task(
     )
 
 
-@router.delete("/{task_id}", response_model=MessageResponse)
+@router.delete("/api/tasks/{task_id}", response_model=MessageResponse)
 def delete_task(
     task_id: int,
     current_user: dict = Depends(get_current_user),
@@ -143,7 +143,7 @@ def delete_task(
         raise HTTPException(status_code=404, detail="Task not found")
 
 
-@router.patch("/{task_id}/complete", response_model=TaskResponse)
+@router.patch("/api/tasks/{task_id}/complete", response_model=TaskResponse)
 def toggle_task_completion(
     task_id: int,
     task_toggle: TaskToggleCompleteRequest,

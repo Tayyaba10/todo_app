@@ -25,10 +25,8 @@ const TasksPage = () => {
       setLoading(true);
       const response = await apiService.getTasks();
 
-    const tasksArray: Task[] = Array.isArray(response)
-      ? response
-      : Array.isArray((response as any)?.data)
-      ? (response as any).data
+    const tasksArray: Task[] = Array.isArray(response.tasks)
+      ? response.tasks
       : [];
 
     setTasks(tasksArray);
